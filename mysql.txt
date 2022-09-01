@@ -1,0 +1,19 @@
+mysql > use mysql;    // mysql database 선택
+
+mysql > select host, user, password from user;    // user 테이블 살펴보기
+
+
+mysql > create user userid@localhost identified by '비밀번호';
+mysql > create user 'userid'@'%' identified by '비밀번호';  // '%' 의 의미는 외부에서의 접근을 허용
+
+
+create database DB명;    // 데이터베이스 생성
+
+mysql > create database DB명 default character set utf8;
+
+
+GRANT ALL privileges ON DB명.* TO 계정아이디@locahost IDENTIFIED BY '비밀번호';
+mysql> GRANT ALL privileges ON DB명.* TO 계정아이디@'%' IDENTIFIED BY '비밀번호';
+
+
+ mysql >grant all privileges on test.* to userid@localhost identified by '비밀번호';

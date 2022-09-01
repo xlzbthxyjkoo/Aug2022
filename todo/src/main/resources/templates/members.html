@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>회원 목록보기</h1>
+
+
+<table border="1">
+  <thead>
+  <tr>
+    <td>id</td>
+    <td>userId</td>
+    <td>name</td>
+    <td>password</td>
+    <td>email</td>
+    <td>joinDate</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="member, status: ${members}">
+    <td th:text="${member.id}"></td>
+    <td th:text="${member.userId}"></td>
+    <td th:text="${member.name}"></td>
+    <td th:text="${member.password}"></td>
+    <td th:text="${member.email}"></td>
+    <td th:text="${member.joinDate}"></td>
+  </tr>
+  </tbody>
+</table>
+
+
+<a href="/todos">todo List</a>
+<a href="/member/add">member join</a>
+</body>
+</html>

@@ -1,0 +1,37 @@
+1.  git 설치 
+	--  설치가 되면 아무 경로에서든 git 이라고 입력 했을때... 사용방법 같은것이 뜬다.. 
+
+2. 깃으로 관리하고 싶은 디렉토리에서... 
+( workspace의 상위 디렉토리...  ex) sku  workspace 를 감싸는 디렉토리를 하나 생성하면 좋다.)   
+
+c:\sku>git init      
+
+이렇게 하면, sku 디렉토리에 .git   폴더가 하나 생긴다!!     ( 파일탐색기의 보기 옵션중에 숨긴항목보기 활성화 해야보임) 
+
+3. .gitignore  파일 생성!!!   ---   해당 디렉토리에 존재하지만, git으로 관리하고 싶지 않은 파일이나, 디렉토리를 기술한다.
+
+
+4. 	git config --global user.name "사용자이름"
+	git config --global user.email "이메일@abc.com"
+
+5. github 사이트에 가서 레파지토리 생성!!! 
+
+6. cmd 에서   c:\sku>git add .  
+
+7. git commit -m "first commit"
+
+8. git branch -M main
+
+9. git remote add origin https://토큰@github.com/.git
+
+10. git push -u origin main 
+
+
+// 이용중이던 디렉토리와 git 레파지토리 연동!!! 
+
+
+
+
+
+
+git push -u origin main

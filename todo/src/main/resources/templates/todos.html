@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>todo List</title>
+
+  <link rel="stylesheet" type="text/css" href="/static/todo.css">
+</head>
+<body>
+<a th:if="${session.loginUser} == null" href="/member/add">회원가입</a>
+<a th:if="${session.loginUser} == null" href="/login">로그인</a>
+<span th:if="${session.loginUser} != null" th:text="${session.loginUser.name}"></span>
+<a th:if="${session.loginUser} != null" href="/logout">로그아웃</a>
+<a th:if="${session.loginUser} != null" th:href="@{'/todos/'+${session.loginUser.id}}">내꺼만 보기</a>
+<a th:if="${session.loginUser} != null" href="/todos">전체보기</a>
+
+<h1>todoList</h1>
+<form action="/todo/add" method="post">
+  <input type="text" name="todo" placeholder="할일...">
+  <input type="submit" value="추가">
+</form>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>할일</th>
+    <th>완료일</th>
+    <th>진행사항</th>
+    <th>누구꺼?</th>
+    <th>삭제</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="todo, status: ${todos}">
+    <td th:text="${todo.todo}"></td>
+    <td th:text="${todo.endDate}"></td>
+    <td th:if="${todo.endDate != null}"><button th:onclick="|location.href='@{'/todo/update/'+${todo.id}}'|">완료</button></td>
+    <td th:if="${todo.endDate == null}"><button th:onclick="|location.href='@{'/todo/update/'+${todo.id}}'|">진행중</button></td>
+    <td th:if="${todo.member != null}" th:text="${todo.member.userId}"></td>
+    <td th:if="${todo.member == null}" >아무나</td>
+    <td th:if="${todo.member == null}"><a   th:href="@{'/todo/del/'+${todo.id}}">삭제</a></td>
+    <td th:if="${todo.member != null and session.loginUser != null and todo.member.id == session.loginUser.id}"><a th:href="@{'/todo/del/'+${todo.id}}">삭제</a></td>
+    <td th:if="${todo.member !=null and session.loginUser == null}">남의꺼~</td>
+    <td th:if="${session.loginUser != null and todo.member !=null and todo.member.id != session.loginUser.id}">남의꺼~</td>
+  </tr>
+  </tbody>
+</table>
+
+<!--<script src="../js/todo.js"></script>-->
+
+</body>
+</html>
